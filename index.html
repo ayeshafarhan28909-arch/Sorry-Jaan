@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I'm Sorry, Safwan 💚</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #246b45;
+    --dark-green: #17472e;
+    --light-green: #e7f7eb;
+    --soft-green: #f4fcf5;
+    --white: #ffffff;
+    --text: #496454;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #e5f8e9, #ffffff, #d8f0df);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.8;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #d7eedc;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+nav a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.heart {
+    font-size: 85px;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 8px 10px #7bb88a55);
+}
+
+.tag {
+    display: inline-block;
+    background: #d8f3df;
+    color: var(--green);
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: clamp(42px, 8vw, 78px);
+    color: var(--dark-green);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+h1 span {
+    color: #48a66b;
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px #246b4530;
+}
+
+.btn:hover {
+    background: var(--dark-green);
+    transform: translateY(-3px);
+}
+
+.section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 65px 22px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    color: var(--dark-green);
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #6a8874;
+}
+
+.letter {
+    background: rgba(255,255,255,0.93);
+    border: 1px solid #d6eedb;
+    border-radius: 25px;
+    padding: clamp(22px, 5vw, 48px);
+    box-shadow: 0 15px 45px #285e3820;
+}
+
+.letter h3 {
+    color: var(--green);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: left;
+}
+
+.letter .highlight {
+    background: var(--soft-green);
+    border-left: 4px solid #65b87c;
+    padding: 18px;
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+}
+
+.love-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.love-box {
+    padding: 25px 15px;
+    text-align: center;
+    border: 1px solid #d4ead9;
+    background: white;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.love-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #246b4515;
+}
+
+.love-box .emoji {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.love-box h3 {
+    color: var(--green);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.love-box p {
+    font-size: 14px;
+}
+
+.quote {
+    background: linear-gradient(135deg, #246b45, #39885a);
+    color: white;
+    padding: 55px 25px;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 30px;
+    box-shadow: 0 15px 35px #246b4525;
+}
+
+.quote p {
+    font-size: clamp(20px, 4vw, 29px);
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.quote small {
+    display: block;
+    margin-top: 20px;
+    color: #d7f4df;
+}
+
+.promise {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid #d7eedc;
+    margin-top: 25px;
+}
+
+.promise ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.promise li {
+    margin: 14px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.promise li::before {
+    content: "💚";
+    position: absolute;
+    left: 0;
+}
+
+.final-section {
+    text-align: center;
+    padding: 80px 20px 100px;
+    background: rgba(255,255,255,0.5);
+}
+
+.final-section h2 {
+    color: var(--dark-green);
+    font-size: clamp(32px, 6vw, 52px);
+    margin-bottom: 20px;
+}
+
+.final-section p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+}
+
+#response {
+    color: var(--green);
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 25px;
+    min-height: 35px;
+}
+
+footer {
+    background: var(--dark-green);
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -50px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    opacity: 0.65;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.65; }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .hero {
+        min-height: 82vh;
+        padding: 50px 20px;
+    }
+
+    .heart {
+        font-size: 65px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 45px 16px;
+    }
+
+    .love-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .love-box {
+        padding: 23px;
+    }
+
+    .letter {
+        border-radius: 18px;
+    }
+
+    .letter p {
+        font-size: 15px;
+    }
+
+    .quote {
+        padding: 35px 20px;
+    }
+
+    .promise {
+        padding: 22px;
+    }
+
+    .btn {
+        max-width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<nav>
+    <div class="logo">For My Mr Ego 💚</div>
+    <a href="#my-letter">My Apology ↓</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="heart">💚</div>
+
+    <div class="tag">A LITTLE LETTER FROM MY HEART</div>
+
+    <h1>I'm Sorry,<br><span>Jaan.</span> 🥺</h1>
+
+    <p>
+        Sometimes words cannot explain what the heart feels.
+        But today, I want to try, because you deserve to know
+        how truly sorry I am.
+    </p>
+
+    <a class="btn" href="#my-letter">Read My Heart 💌</a>
+</header>
+
+<!-- LONG APOLOGY LETTER -->
+<section class="section" id="my-letter">
+
+    <div class="section-title">
+        <h2>Ashii ki Jaan, 💌</h2>
+        <p>Please read this with an open heart.</p>
+    </div>
+
+    <article class="letter">
+
+        <h3>My longest, most heartfelt sorry... 🤍</h3>
+
+        <p>
+            Safii, I honestly don't even know where to begin,
+            because there are so many things I want to tell you
+            and so many feelings in my heart that I cannot
+            explain perfectly. But the first thing I need you
+            to know is that <strong>I'm truly, genuinely sorry.</strong>
+        </p>
+
+        <p>
+            I'm sorry if my words hurt you. I'm sorry if my
+            actions made you feel unimportant.Mn apsy buht pyaar krti
+           ap janty ho thori si bewkoof hu lkin sb sy zyda apko chahti
+           hu. I know mn buht si gltiya ki lkin ab un sbko improve 
+           krny ki koshsish kr rhi hu na. Ap jo kahy gy krny k liye tyar
+           hu. I know i am not a very good girl lkin mujy ye bhi pta
+           hai k ap mujh sy kitna pyaar krty hn. or ye baty bhi ap
+           ignore ni kr skty.          
+            
+            
+            
+        </p>
+
+        <p>
+            Safii, Mn ny hr trha sy koshish ki hai apko mnany
+            ki because i want you the most meri jaan or agr
+            ap ny ye sb prhny k bd bhi mujy unfrnd kiya to mn
+            apko choru gi ni mery pyary sy Mr Ego.Bs ye bat
+            apny zehn mn bitha lein k ayesha sy zyda
+            koi apko pyaar ni kr skta or na hi kisi ko
+            is chz ki ijazat hai smjhy na ap meri pyaari jaan.
+        </p>
+
+        <p>
+            I just want to acknowledge my mistakes and tell you
+            that I wish I had handled things differently.Or agr
+            apku mutabiq mn kch thk ni kr skti to phr bhi
+            mery sath rho mujy smjhao, mujy dant lo jaan.
+            lkin mujy chorny ka haq ni hai apko smjhy ap.
+        </p>
+
+        <p class="highlight">
+            "I'm not sorry just because things feel different
+            right now. I'm sorry because your feelings matter
+            to me, and I never want to take your trust or your
+            kindness for granted." 💚
+        </p>
+
+        <p>
+             Jaan, I know that you have your own feelings, your own
+            thoughts, and your own way of processing things.
+            I don't expect you to forget everything immediately
+            just because I'm apologizing. You deserve time,
+            honesty, understanding, and the freedom to feel
+            whatever you are feeling.
+        </p>
+
+        <p>
+            I wish I could show you how much I regret the
+            moments when I made things harder instead of
+            making them better. I wish I could replace every
+            unpleasant moment with a little more kindness,
+            every misunderstanding with a proper conversation,
+            and every moment of sadness with peace.
+        </p>
+
+        <p>
+             Jannaaa, please know that this apology isn't meant
+            to pressure you into forgiving me. I don't want
+            you to say everything is okay if it isn't. I want
+            to be honest with you, hear your side, and
+            understand what I can do differently in the future.
+        </p>
+
+        <p>
+            If I didn't listen when I should have listened,
+            I'm sorry. If I misunderstood you, I'm sorry.
+            If my behavior made you question whether your
+            feelings mattered, I'm especially sorry. You
+            deserve to be heard, respected, and treated with
+            care, even when we disagree.
+        </p>
+
+        <p>
+            I also want to learn from this. I don't want my
+            apology to be just a collection of pretty words
+            that disappear after today. I want to remember
+            what went wrong, think about my part in it, and
+            make a real effort to communicate better.
+        </p>
+
+        <p>
+            I know trust is built through actions, not just
+            promises. So instead of asking you to believe
+            everything immediately, I want to give you the
+            chance to see my intentions through the way I
+            behave from now on.
+        </p>
+
+        <p>
+            Sometimes pride makes it difficult to admit that
+            we were wrong. But I don't want pride to become
+            more important than honesty. I would rather admit
+            my mistakes, learn something meaningful, and try
+            to make things right than pretend that nothing
+            happened.
+        </p>
+
+        <p>
+            Meri jaan, I hope you know that I never wanted this
+            apology to be about winning an argument or proving
+            who was right. What matters to me is understanding
+            each other better. Even when two people see a
+            situation differently, they can still choose to
+            speak with respect and care.
+        </p>
+
+        <p>
+            If you are still upset, I understand. If you need
+            some time, I respect that too. You don't have to
+            rush your feelings for my comfort. I would rather
+            have an honest conversation when you're ready
+            than pretend that everything is fine before
+            we've had the chance to understand each other.
+        </p>
+
+        <p>
+            I am sorry for the hurt, the confusion, and the
+            moments I wish I could redo. I cannot change the
+            past, but I can take responsibility for my choices
+            today. And I can keep learning how to be more
+            thoughtful, patient, and understanding.
+        </p>
+
+        <p>
+            Thank you for taking the time to read this.
+            Thank you for the moments of kindness and for
+            every time we have been able to understand each
+            other. I don't take those things lightly.
+        </p>
+
+        <p>
+            No matter how you feel after reading this, I hope
+            you remember that your feelings are valid. You
+            don't owe me an immediate answer, and you don't
+            have to pretend to be okay. I just wanted to
+            speak honestly from my heart.
+        </p>
+
+        <p>
+            Once again, I'm deeply sorry, meri jaan. For my
+            mistakes, for the things I could have done better,
+            and for any pain my actions caused. I hope that
+            with time, understanding, and genuine effort,
+            we can move forward in a healthier way.
+        </p>
+
+        <p>
+            If you give me the opportunity, I want to show
+            you that I have taken this seriously. Not by
+            promising perfection, but by trying to do better,
+            being more aware of my actions, and treating
+            your feelings with the care they deserve.
+        </p>
+
+        <p>
+            And the last ye aik choti si koshish meri
+            jaan ko phr sy mnany ki and its your choice to love 
+            me or not but i love uh and thats important for me.
+        </p>
+
+        <h3 style="text-align:center; margin-top:35px;">
+            I'm sorry, Bachyyy for all my mistakes. Truly. 💚
+        </h3>
+
+    </article>
+</section>
+
+<!-- LITTLE REMINDERS -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>Three Things I Want You to Know 🌷</h2>
+        <p>Little reminders from my heart to yours.</p>
+    </div>
+
+    <div class="love-boxes">
+
+        <div class="love-box">
+            <div class="emoji">🤍</div>
+            <h3>Your Feelings Matter</h3>
+            <p>
+                You deserve to be heard and understood.
+                I want to listen instead of assuming.
+            </p>
+        </div>
+
+        <div class="love-box">
+            <div class="emoji">🫂</div>
+            <h3>I Take Responsibility</h3>
+            <p>
+                I'm willing to acknowledge my mistakes
+                and learn from the things that went wrong.
+            </p>
+        </div>
+
+        <div class="love-box">
+            <div class="emoji">🌱</div>
+            <h3>I Want to Do Better</h3>
+            <p>
+                Real change takes effort, patience,
+                and consistent actions over time.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="quote">
+        <p>
+            "A sincere apology isn't about finding
+            the perfect words. It's about having
+            the courage to admit a mistake and
+            the willingness to grow." 💚
+        </p>
+        <small>A little reminder for both of us</small>
+    </div>
+
+</section>
+
+<!-- MY PROMISE -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>A Promise to Do Better 🌿</h2>
+        <p>Not a promise to be perfect, but a promise to keep learning.</p>
+    </div>
+
+    <div class="promise">
+
+        <p>
+            My Love, here are some things I want to work on
+            so that my apology can mean more than words:
+        </p>
+
+        <ul>
+            <li>Listening carefully before reacting.</li>
+            <li>Thinking about how my words may affect others.</li>
+            <li>Being honest when something is bothering me.</li>
+            <li>Respecting your feelings, even when we disagree.</li>
+            <li>Admitting my mistakes instead of making excuses.</li>
+            <li>Giving difficult conversations the patience they need.</li>
+            <li>Showing change through consistent actions.</li>
+            <li>Respecting your space and the time you may need.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+<!-- FINAL MESSAGE -->
+<section class="final-section">
+
+    <div style="font-size:65px; margin-bottom:15px;">
+        💚
+    </div>
+
+    <h2>One Last Thing, Safwan...</h2>
+
+    <p>
+        If I could send one message straight from my heart
+        to yours, it would simply be this: I'm sorry.
+        I'm sorry for the things I got wrong, for the
+        moments I could have handled better, and for
+        any hurt I caused along the way.
+    </p>
+
+    <p>
+        I hope we can take something good from this,
+        understand each other a little better, and
+        find a way forward when we're both ready.
+        Thank you for reading my little letter. 🥹
+    </p>
+
+    <button class="btn" id="forgiveBtn">
+        A Little Hug for You 🫂
+    </button>
+
+    <div id="response" aria-live="polite"></div>
+
+    <p style="margin-top:30px; color:#73927d;">
+        Made with a sincere heart, just for Safwan. 💌
+    </p>
+
+</section>
+
+<footer>
+    <p>For Safwan, with sincerity and care 💚</p>
+    <p>Sometimes, the first step is simply saying sorry.</p>
+</footer>
+
+<script>
+// CONFETTI ANIMATION
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+let animationId = null;
+
+function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const colors = [
+    "#246b45",
+    "#69bd80",
+    "#b7eac2",
+    "#ffffff",
+    "#e8d28c",
+    "#f3a6bd"
+];
+
+function burstConfetti() {
+    for (let i = 0; i < 180; i++) {
+        pieces.push({
+            x: Math.random() * window.innerWidth,
+            y: -20 - Math.random() * window.innerHeight * 0.4,
+            size: Math.random() * 7 + 3,
+            speed: Math.random() * 3 + 2,
+            drift: (Math.random() - 0.5) * 3,
+            rotation: Math.random() * 360,
+            spin: (Math.random() - 0.5) * 10,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        });
+    }
+
+    if (!animationId) {
+        animateConfetti();
+    }
+}
+
+function animateConfetti() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    pieces.forEach(piece => {
+        piece.x += piece.drift;
+        piece.y += piece.speed;
+        piece.rotation += piece.spin;
+
+        ctx.save();
+        ctx.translate(piece.x, piece.y);
+        ctx.rotate(piece.rotation * Math.PI / 180);
+
+        ctx.fillStyle = piece.color;
+        ctx.fillRect(
+            -piece.size / 2,
+            -piece.size / 2,
+            piece.size,
+            piece.size * 0.65
+        );
+
+        ctx.restore();
+    });
+
+    pieces = pieces.filter(
+        piece => piece.y < window.innerHeight + 30
+    );
+
+    if (pieces.length > 0) {
+        animationId = requestAnimationFrame(animateConfetti);
+    } else {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        animationId = null;
+    }
+}
+
+// FLOATING HEARTS
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = ["💚", "🤍", "💕", "🌷", "💗"];
+    heart.textContent = hearts[
+        Math.floor(Math.random() * hearts.length)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 18) + "px";
+    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 12000);
+}
+
+setInterval(createHeart, 1000);
+
+// FORGIVENESS / HUG BUTTON
+document.getElementById("forgiveBtn").addEventListener("click", () => {
+    document.getElementById("response").textContent =
+        "Sending you the biggest virtual hug, Safwan! 🫂💚";
+
+    burstConfetti();
+});
+
+// INITIAL CONFETTI
+window.addEventListener("load", () => {
+    setTimeout(burstConfetti, 600);
+});
+</script>
+
+</body>
+</html>
